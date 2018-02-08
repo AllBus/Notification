@@ -13,6 +13,7 @@ namespace Notification
        public const string timeLabelFormat = "HH:mm";
        public const string longDateFormat = "d MMMM yyyy в HH:mm";
 
+
        internal static string API_URI = "http://127.0.0.1/" ;
 
        internal static string API_CHECK_DATE(long date)
