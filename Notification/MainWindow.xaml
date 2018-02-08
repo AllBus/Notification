@@ -1,0 +1,77 @@
+﻿<Window x:Class="Notification.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Notification"
+        mc:Ignorable="d"
+        
+        Title="События" Height="680" Width="840" Activated="Window_Activated" Closed="Window_Closed" Closing="Window_Closing" WindowState="Minimized">
+
+      <Grid Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="310"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="56"/>
+        </Grid.ColumnDefinitions>
+
+
+        <ListBox x:Name="calendarList" Margin="10,4" Grid.Row="1" Grid.ColumnSpan="2"  ScrollViewer.CanContentScroll="False" SelectionChanged="calendarList_SelectionChanged" BorderThickness="2,0" PreviewMouseWheel="calendarList_PreviewMouseWheel" RenderTransformOrigin="0.5,0.5">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.Resources>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform />
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" To="1.1" Duration="0:0:.1" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" To="1.1" Duration="0:0:.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" To="1.0" Duration="0:0:.1" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" To="1.0" Duration="0:0:.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.Resources>
+        </ListBox>
+        <Viewbox HorizontalAlignment="Left" Height="100" Margin="46,138.333,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
+
+        <Frame x:Name="fullDataFrame" Content="Frame" Margin="10,10,1,10" Grid.Row="0" Source="/Notification;component/previewEventPage.xaml"/>
+        
+
+        <Button x:Name="button" Grid.Column="1" HorizontalAlignment="Right" Margin="0,10,10,0" Width="36" Click="button_Click" Height="37" VerticalAlignment="Top" Content="{StaticResource svgSync}" MouseDown="button_MouseDown" Style="{StaticResource calendarButtonStyle}"/>
+
+        <Button x:Name="buttonCreate" Grid.Column="1" HorizontalAlignment="Right" Margin="0,64,10,0" Width="36" Click="buttonCreate_Click" Height="37" VerticalAlignment="Top"
+              Content="{StaticResource svgAdd}" Style="{StaticResource calendarButtonStyle}"/>
+
+    </Grid>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo x:Name="taskBarItemInfo1"
+                         ThumbnailClipMargin="10,10,56,10"
+                         >
+
+        </TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
+</Window>

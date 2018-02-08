@@ -1,0 +1,59 @@
+﻿<Page x:Class="Notification.previewEventPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Notification"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="600"
+      Title="previewEventPage">
+
+    <Page.Resources>
+        
+      
+       
+        <Style x:Key="Flat">
+            <Setter Property="Control.Background" Value="{x:Null}" />
+            <Setter Property="Control.BorderBrush" Value="{x:Null}" />
+            <Style.Triggers>
+                <Trigger Property="Control.IsMouseOver" Value="True">
+                    <Setter Property="Control.Background" Value="{x:Null}" />
+                    <Setter Property="Control.BorderBrush" Value="{x:Null}" />
+                    <!--<Setter Property="Control.FontWeight" Value="Bold" />-->
+                </Trigger>
+                <Trigger Property="Control.IsFocused" Value="True">
+                    <!--<Setter Property="Control.FontWeight" Value="Bold" />-->
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36"/>
+            <RowDefinition Height="36"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Image x:Name="image" TouchUp="image_TouchUp" MouseUp="image_MouseUp" Grid.RowSpan="3" />
+        <ScrollViewer Grid.Column="1" Margin="8,8,0,0" Grid.Row="2" Grid.ColumnSpan="2">
+            <TextBlock x:Name="contentLabel" Width="Auto" TextWrapping="Wrap" Text="" FontSize="16" />
+        </ScrollViewer>
+        <Viewbox  Grid.Column="1" Margin="0" Grid.Row="1" HorizontalAlignment="Right">
+            <Label x:Name="dateTimeLabel" Content="25 июня 17:30" Padding="4" VerticalContentAlignment="Center" FontSize="16"  HorizontalContentAlignment="Right"/>
+        </Viewbox>
+        <Label x:Name="durationLabel" Content="2 часа" Grid.Column="2" Margin="0" VerticalContentAlignment="Center" Padding="4,0" FontSize="16" Grid.Row="1"  HorizontalContentAlignment="Right"/>
+        <Border Grid.Column="1"  Grid.Row="0" Margin="8,0,0,0" x:Name="kindLabelBorder">
+        <Viewbox HorizontalAlignment="Right" >
+            <Label x:Name="kindLabel" Content="Поездка" Padding="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" FontSize="16"/>
+        </Viewbox>
+        </Border>
+        <Button x:Name="linkBtn" Content="Перейти на сайт" Margin="0,0,0,0" HorizontalContentAlignment="Right"  Style="{StaticResource Flat}" Click="linkBtn_Click" FontSize="16" VerticalContentAlignment="Center" Padding="4" Grid.Column="2" Cursor="Hand"/>
+    </Grid>
+</Page>

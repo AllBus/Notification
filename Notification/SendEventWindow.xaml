@@ -1,0 +1,43 @@
+﻿<Window x:Class="Notification.SendEventWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Notification"
+        mc:Ignorable="d"
+        Title="Отправка события" Height="480" Width="1000" Initialized="Window_Initialized" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="270"/>
+            <RowDefinition Height="121*"/>
+            <RowDefinition Height="60*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="216"/>
+            <ColumnDefinition Width="56*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+           
+        <Grid x:Name="authorLayout" Margin="8,0,10,9.667" Grid.Row="1" Height="101" VerticalAlignment="Bottom">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="label" Content="Автор" HorizontalAlignment="Left" Margin="0,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.287,0.118"/>
+            <Label x:Name="label1" Content="Пароль" HorizontalAlignment="Left" Margin="0,7.333,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+            <TextBox x:Name="authorEdit" Grid.Column="1" Height="23" Margin="4,10,0,0" Text="" VerticalAlignment="Top" MaxLength="100"/>
+            <PasswordBox x:Name="passwordEdit" Grid.Column="1" Height="23" Margin="4,10,0,0" Grid.Row="1" VerticalAlignment="Top" MaxLength="256"/>
+        </Grid>
+
+        <Button x:Name="sendBtn" Content="Отправить" HorizontalAlignment="Left" Margin="10,0,0,10" Grid.Row="2" Width="113" Height="43" VerticalAlignment="Bottom" Click="sendBtn_Click"/>
+        <Frame x:Name="fullDataFrame" Content="Frame" Margin="10,11,3,10" Grid.Row="0" Source="/Notification;component/previewEventPage.xaml" Grid.RowSpan="3" Grid.Column="1" LoadCompleted="fullDataFrame_LoadCompleted"/>
+        <Frame x:Name="calendarDataFrame" Content="Frame" Margin="8,11,8,8" Grid.Row="0" Source="/Notification;component/CalendarPage.xaml" Grid.RowSpan="1" Grid.Column="0" LoadCompleted="calendarDataFrame_LoadCompleted" />
+    </Grid>
+</Window>

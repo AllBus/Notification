@@ -1,0 +1,113 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Notification">
+    <BitmapImage x:Key="stopImg" UriSource="pack://siteoforigin:,,,/Resources/stopImg.png" />
+
+
+        <Canvas x:Key="svgSync" Width="24" Height="24">
+            <Canvas.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+            </Canvas.RenderTransform>
+            <Canvas.Resources/>
+            <!--Unknown tag: sodipodi:namedview-->
+            <!--Unknown tag: metadata-->
+            <Canvas Name="layer1">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="-1028.3622"/>
+                </Canvas.RenderTransform>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path41387" Fill="#FF5D00F3" StrokeThickness="1.95195889" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Opacity="1">
+                    <Path.Data>
+                        <PathGeometry Figures="M 12 4 C 8.2846352 4 5.1565728 6.5575197 4.2636719 10 L 6.2949219 10 C 7.1177789 7.6394116 9.3509351 5.953125 12 5.953125 C 14.649065 5.953125 16.882221 7.6394116 17.705078 10 L 19.736328 10 C 18.843427 6.5575197 15.715365 4 12 4 z M 4.2636719 14 C 5.1572094 17.441556 8.2852932 20 12 20 C 15.714707 20 18.842791 17.441556 19.736328 14 L 17.705078 14 C 16.882046 16.360815 14.648834 18.048828 12 18.048828 C 9.3511658 18.048828 7.1179541 16.360815 6.2949219 14 L 4.2636719 14 z " FillRule="nonzero"/>
+                    </Path.Data>
+                    <Path.RenderTransform>
+                        <TranslateTransform X="0" Y="1028.3622"/>
+                    </Path.RenderTransform>
+                </Path>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path4211" Fill="#FF5D00F3" StrokeThickness="1" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat">
+                    <Path.Data>
+                        <PathGeometry Figures="m 9 1038.3142 -6 -1.952 1.6813187 4 z" FillRule="evenodd"/>
+                    </Path.Data>
+                </Path>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path4217" Fill="#FF5D00F3" StrokeThickness="1" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat">
+                    <Path.Data>
+                        <PathGeometry Figures="m 15 1042.4102 6 1.952 -1.681319 -4 z" FillRule="evenodd"/>
+                    </Path.Data>
+                </Path>
+            </Canvas>
+        </Canvas>
+
+    <Canvas x:Key="svgAdd" Width="24" Height="24">
+        <Canvas.RenderTransform>
+            <TranslateTransform X="0" Y="0"/>
+        </Canvas.RenderTransform>
+        <Canvas.Resources/>
+        <!--Unknown tag: sodipodi:namedview-->
+        <!--Unknown tag: metadata-->
+        <Canvas Name="layer12">
+            <Canvas.RenderTransform>
+                <TranslateTransform X="0" Y="-1028.3622"/>
+            </Canvas.RenderTransform>
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="rect4142" Fill="#FF008000" StrokeThickness="0.93800002" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Opacity="1">
+                <Path.Data>
+                    <PathGeometry Figures="M 11 4 L 11 11 L 4 11 L 4 13 L 11 13 L 11 20 L 13 20 L 13 13 L 20 13 L 20 11 L 13 11 L 13 4 L 11 4 z " FillRule="NonZero"/>
+                </Path.Data>
+                <Path.RenderTransform>
+                    <TranslateTransform X="0" Y="1028.3622"/>
+                </Path.RenderTransform>
+            </Path>
+        </Canvas>
+    </Canvas>
+
+
+
+
+    <Style x:Key ="expandStyle">
+
+        <Style.Triggers>
+            <Trigger Property="Button.IsPressed" Value="True">
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)" From="0" To="200" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="simpleBtnStyle" >
+        <Setter Property="Control.Background" Value="Black" />
+        <Style.Triggers>
+            <Trigger Property="Button.IsPressed" Value="True">
+                <Setter Property="Button.Content" Value="Red" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="calendarButtonStyle" TargetType="Button">
+        <Style.Setters>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="Button.RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform />
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Click">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard >
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" To="1.2" 
+                                                 FillBehavior="Stop"   Duration="0:0:0.2" AutoReverse="True" />
+                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" To="1.2" Duration="0:0:0.2" AutoReverse="True" 
+                                                 FillBehavior="Stop"/>
+                            </Storyboard>
+
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+</ResourceDictionary>

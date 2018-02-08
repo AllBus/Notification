@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<data>
+  <server url="http://localhost:9000/" period="60">
+  </server>
+  <window title="Мои события" >
+    <button id="edit" clickable="true" />
+    <button id="image" clickable="true" />
+    <button id="author" clickable ="true"/>
+  </window>
+</data>
